@@ -54,7 +54,7 @@ The raw table keeps them distinct.
 
 ## Files
 
-`results/collisions.csv` — one row per collision group.
+`teams/04-ke2/results/collisions.csv` — one row per collision group.
 
 | Column | Meaning |
 |---|---|
@@ -70,7 +70,7 @@ The raw table keeps them distinct.
 | `byte_len` | its length |
 | `true_bytes_hex_examples` | exact bytes of the first 5 members, hex |
 
-`results/collisions_summary.csv` — one row per (extraction, P, script class); every class
+`teams/04-ke2/results/collisions_summary.csv` — one row per (extraction, P, script class); every class
 appears, including those with zero collisions.
 
 | Column | Meaning |
@@ -83,10 +83,10 @@ appears, including those with zero collisions.
 So 1,151 colliding tokens fall into 10 groups; only 10 distinct codes remain for them,
 i.e. 1,141 codes are lost. Both numbers are reported; they answer different questions.
 
-`results/collisions_meta.json` — tokenizer path and sha256, package versions, totals per
+`teams/04-ke2/results/collisions_meta.json` — tokenizer path and sha256, package versions, totals per
 table, and the gate (`gate_zero_other`).
 
-`results/inspect_BrahmicTokenizer-131K.json` — step-1 census of the vocabulary
+`teams/04-ke2/results/inspect_BrahmicTokenizer-131K.json` — step-1 census of the vocabulary
 (lengths, specials, fragments, single-byte coverage, codec smoke test).
 
 ## Caveats
@@ -113,7 +113,7 @@ and `src/build_tables.py` (Tables task).
 ```bash
 cd teams/04-ke2
 python collisions/inspect_tokenizer.py      # step-1 census
-python collisions/build_collisions.py       # writes results/, exit code 1 if any 'other'
+python collisions/build_collisions.py       # writes teams/04-ke2/results/, exit code 1 if any 'other'
 cd ../..
 python -m pytest teams/04-ke2/tests -q      # includes a check that results/ is current
 ```

@@ -188,8 +188,8 @@ def test_csv_roundtrip(tmp_path, audit, tb):
 
 def test_committed_csv_is_current(audit, tb):
     """If results are committed, they must match a fresh recompute for this tokenizer."""
-    p = bc.HERE / "results" / "collisions.csv"
-    meta_p = bc.HERE / "results" / "collisions_meta.json"
+    p = bc.RESULTS / "collisions.csv"
+    meta_p = bc.RESULTS / "collisions_meta.json"
     if not p.exists() or not meta_p.exists():
         pytest.skip("no committed results")
     import json

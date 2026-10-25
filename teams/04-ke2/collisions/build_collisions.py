@@ -18,7 +18,7 @@ Every collision group gets one cause:
   truncation      extraction bytes differ before truncation, equal after cutting to P
   other           none of the above  -> gate: must be zero
 
-Outputs (default: collisions/results/):
+Outputs (default: teams/04-ke2/results/):
   collisions.csv          one row per group
   collisions_summary.csv  per (extraction, P, script_class) counts and rate
   collisions_meta.json    provenance + totals + gate
@@ -38,6 +38,7 @@ from pathlib import Path
 from typing import Dict, List, Sequence, Tuple
 
 HERE = Path(__file__).resolve().parent                 # teams/04-ke2/collisions
+RESULTS = HERE.parent / "results"                      # teams/04-ke2/results (brief path)
 SRC = HERE.parent / "src"
 if str(SRC) not in sys.path:
     sys.path.insert(0, str(SRC))
@@ -266,7 +267,7 @@ def print_report(a: Audit, meta: dict) -> None:
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--tokenizer", default=None, help="tokenizer.json / dir / HF id")
-    ap.add_argument("--out", default=str(HERE / "results"))
+    ap.add_argument("--out", default=str(RESULTS))
     args = ap.parse_args(argv)
 
     tb = bt.load_tokenizer(args.tokenizer)
