@@ -26,7 +26,7 @@ Tokenizer: `theschoolofai/BrahmicTokenizer-131K`,
 
 - **Collision:** two token IDs whose table rows (bytes after truncation to P) are identical.
   Identical rows give identical codes, so the model cannot tell the tokens apart.
-- **Extraction** — how a token ID is turned into bytes (tables built by `src/build_tables.py`):
+- **Extraction** — how a token ID is turned into bytes (tables built by `src/tables/build_tables.py`):
   - `raw` — exact bytes, by inverting the 256-symbol ByteLevel alphabet the tokenizer
     stores tokens in. Special tokens use their literal text. **This is the KE2 table.**
   - `decode` — what `kronecker-embeddings` 0.1.1 does today:
@@ -108,12 +108,12 @@ table, and the gate (`gate_zero_other`).
 ## Reproduce
 
 Requires `kronecker-embeddings==0.1.1`, `tokenizers`, `transformers`, `torch`, `numpy`,
-and `src/build_tables.py` (Tables task).
+and `src/tables/build_tables.py` (Tables task).
 
 ```bash
 cd teams/04-ke2
-python collisions/inspect_tokenizer.py      # step-1 census
-python collisions/build_collisions.py       # writes teams/04-ke2/results/, exit code 1 if any 'other'
+python src/collisions/inspect_tokenizer.py      # step-1 census
+python src/collisions/build_collisions.py       # writes teams/04-ke2/results/, exit code 1 if any 'other'
 cd ../..
 python -m pytest teams/04-ke2/tests -q      # includes a check that results/ is current
 ```

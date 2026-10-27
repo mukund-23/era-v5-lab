@@ -5,7 +5,7 @@ Definition: two token IDs *collide* at pos_dim P under an extraction if their
 table rows (bytes after truncation to P) are identical. Identical rows give
 identical Kronecker codes, so the model cannot tell the tokens apart.
 
-Extractions (tables from src/build_tables.py):
+Extractions (tables from src/tables/build_tables.py):
   decode — upstream kronecker-embeddings behaviour, tokenizer.decode([id])
   raw    — exact bytes via the inverted ByteLevel alphabet (the KE2 fix)
 
@@ -37,11 +37,12 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Dict, List, Sequence, Tuple
 
-HERE = Path(__file__).resolve().parent                 # teams/04-ke2/collisions
-RESULTS = HERE.parent / "results"                      # teams/04-ke2/results (brief path)
-SRC = HERE.parent / "src"
-if str(SRC) not in sys.path:
-    sys.path.insert(0, str(SRC))
+HERE = Path(__file__).resolve().parent                 # teams/04-ke2/src/collisions
+TEAM_DIR = HERE.parent.parent                          # teams/04-ke2
+RESULTS = TEAM_DIR / "results"                         # teams/04-ke2/results (brief path)
+TABLES = TEAM_DIR / "src" / "tables"                   # build_tables.py (Tables task)
+if str(TABLES) not in sys.path:
+    sys.path.insert(0, str(TABLES))
 
 import build_tables as bt  # noqa: E402
 

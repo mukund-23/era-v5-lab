@@ -235,7 +235,7 @@
     "examples": []
   },
   "decode_bug": {
-    "seconds": 0.68,
+    "seconds": 0.64,
     "n_checked": 131072,
     "n_decode_differs_from_raw": 1306,
     "n_decode_contains_fffd": 1326,
@@ -518,5 +518,5 @@
       }
     ]
   },
-  "seconds_total": 11.8
+  "seconds_total": 19.26
 }

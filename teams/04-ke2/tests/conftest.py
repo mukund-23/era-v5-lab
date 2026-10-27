@@ -1,6 +1,6 @@
 """Shared setup for teams/04-ke2/tests.
 
-* Puts teams/04-ke2/src and teams/04-ke2/collisions on sys.path so tests can
+* Puts teams/04-ke2/src/tables and teams/04-ke2/src/collisions on sys.path so tests can
   ``import build_tables`` / ``import build_collisions`` / ``import inspect_tokenizer``.
 * Builds the tokenizer bundle and the four byte tables ONCE per pytest run
   (session scope) — building them takes ~1 min on CPU.
@@ -21,7 +21,7 @@ import pytest
 fixture = pytest.fixture
 
 TEAM_DIR = Path(__file__).resolve().parent.parent          # teams/04-ke2
-for sub in ("src", "collisions"):
+for sub in ("src/tables", "src/collisions"):
     p = str(TEAM_DIR / sub)
     if p not in sys.path:
         sys.path.insert(0, p)

@@ -320,7 +320,7 @@ def main():
     report["seconds_total"] = round(time.time() - t0, 2)
 
     name = args.tokenizer.rstrip("/").split("/")[-1]
-    out = Path(args.out) if args.out else Path(__file__).resolve().parent.parent / "results" / f"inspect_{name}.json"
+    out = Path(args.out) if args.out else Path(__file__).resolve().parents[2] / "results" / f"inspect_{name}.json"
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(report, indent=2, ensure_ascii=True))
     print_summary(report)
